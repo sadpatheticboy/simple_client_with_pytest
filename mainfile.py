@@ -40,15 +40,3 @@ class Worker:
     def __call__(self, *args, **kwargs):
         return {'wiki_data': self.wiki_client(),
                 'plos_data': self.plos_client()}
-
-
-wiki_url = 'https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Craig%20Noone&format=json'
-plos_url = 'https://api.plos.org/search?q=title:DNA'
-
-wiki_client = WikiClient(wiki_url)
-plos_client = PlosClient(plos_url)
-
-worker = Worker(wiki_client=wiki_client, plos_client=plos_client)
-res = worker()
-
-c = 1
